@@ -1,0 +1,17 @@
+module ZF_Zerum {
+    imports {
+        Base
+    }
+    item Z-Serum
+    {
+        DisplayCategory = FirstAid,
+        Weight = 0.1,
+        Type = Food,
+        DisplayName = Z-Serum,
+        Icon = ZF_Z-Serum,
+        CustomContextMenu = Inyectarse,
+        OnEat = ZF_Zerum_Inyeccion,
+        CantBeFrozen = TRUE,
+        Medical = TRUE,
+    }
+}
