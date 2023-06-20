@@ -1,2 +1,2 @@
 # Z-serum
-First mod created by Zertex and FelipeFBH.
+First Project Zomboid Mod created by Zertex and FelipeFBH.
