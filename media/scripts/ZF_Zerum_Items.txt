@@ -9,7 +9,7 @@ module ZF_Zerum {
         Type = Food,
         DisplayName = Z-Serum,
         Icon = ZF_Z-Serum,
-        CustomContextMenu = Inyectarse,
+        CustomContextMenu = ZS_Inject,
         OnEat = ZF_Zerum_Inyeccion,
         CantBeFrozen = TRUE,
         Medical = TRUE,
