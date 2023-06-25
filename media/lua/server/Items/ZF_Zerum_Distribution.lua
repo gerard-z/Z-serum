@@ -24,6 +24,30 @@ local ZF_Zerum_ProceduralDistribution = {
     --    {"Place2", probability},
     --    {"Place3", 0.1},
     --}    
+    ZF_Zerum.ZSerum = {
+        {"ArmyStorageMedical",    30},
+        {"ArmySurplusBackpacks",   5},
+        {"ControlRoomCounter",     5},
+        {"DrugLabSupplies",       30},
+        {"DrugShackDrugs",        10},
+        {"DrugShackMisc",          5},
+        {"FireDeptLockers",        1},
+        {"HospitalLockers",        2},
+        {"LockerArmyBedroom",      5},
+        {"MedicalClinicDrugs",    30},
+        {"MedicalStorageDrugs",   30},
+        {"MorgueChemicals",        5},
+        {"PoliceDesk",             1},
+        {"PoliceEvidence",         1},
+        {"PoliceLockers",          1},
+        {"PrisonCellRandom",       1},
+        {"PrisonGuardLockers",     1},
+        {"SafehouseMedical",      20},
+        {"SecurityLockers",        1},
+        {"SpiffosKitchenFreezer",  1},
+        {"StoreShelfMedical",      1},
+        {"TestingLab",             1},
+    }
 }
 
 local ZF_Procedural_Item = next(ZF_Zerum_ProceduralDistribution, nil) -- Get the first key of the table
@@ -45,6 +69,7 @@ end
 
 
 -- Suburbs Distribution --
+-- Generally we add here the non procedural items, like bags, etc.
 
 local ZF_Zerum_SuburbsDistributions = {
     --YourItem = {
@@ -52,6 +77,15 @@ local ZF_Zerum_SuburbsDistributions = {
     --    {"Place2", probability},
     --    {"Place3", 0.1},
     --}   
+    ZF_Zerum.ZSerum={
+    
+        {"Bag_DoctorBag",    10},
+        {"Bag_MedicalBag",   10},
+        {"Bag_Military",     20},
+        {"Bag_SurvivorBag",  10},
+        {"FirstAidKit",       5},
+    
+    }
 }
 
 local ZF_Suburbs_Item = next(ZF_Zerum_SuburbsDistributions, nil) -- Get the first key of the table
