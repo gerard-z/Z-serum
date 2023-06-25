@@ -15,10 +15,38 @@ require "Items/ProceduralDistributions"
 -- To add an item to a procedural distribution, you need to follow this format:
 
 -- Example Code:
--- table.insert(ProceduralDistributions.list[ "The_Place_Where_You_Want_It" ].items, "Item_You_Want_To_Add")
--- table.insert(ProceduralDistributions.list[ "The_Place_Where_You_Want_It" ].items, Probability --(this param is a float!)-- )
+-- table.insert(ProceduralDistributions.list["list"][ "The_Place_Where_You_Want_It" ].items, "Item_You_Want_To_Add")
+-- table.insert(ProceduralDistributions.list["list"][ "The_Place_Where_You_Want_It" ].items, Probability --(this param is a float!)-- )
 
 local ZF_Zerum_ProceduralDistribution = {
+    --YourItem = {
+    --    {"Place1", 100},
+    --    {"Place2", probability},
+    --    {"Place3", 0.1},
+    --}    
+}
+
+local ZF_Procedural_Item = next(ZF_Zerum_ProceduralDistribution, nil) -- Get the first key of the table
+
+
+while ZF_Procedural_Item do -- item not null
+    for ZF_item in pairs (ZF_Zerum_ProceduralDistribution[ZF_Procedural_Item]) do -- for each Place and Probability in the item
+        
+        local ZF_Procedural_Place = ZF_item[1]
+        local ZF_Procedural_Probability = ZF_item[2]
+        
+        table.insert(ProceduralDistributions.list["list"][ ZF_Procedural_Place ].items, ZF_Procedural_Item)
+        table.insert(ProceduralDistributions.list["list"][ ZF_Procedural_Place ].items, ZF_Procedural_Probability)
+        --print(ZF_Procedural_Item, ZF_Procedural_Place, ZF_Procedural_Probability)
+    end
+    ZF_Procedural_Item = next(ZF_Zerum_ProceduralDistribution, ZF_Procedural_Item) -- Get the next key of the table
+end
+
+
+
+-- Suburbs Distribution --
+
+local ZF_Zerum_SuburbsDistributions = {
     --YourItem = {
     --    {"Place1", 100},
     --    {"Place2", probability},
@@ -26,20 +54,16 @@ local ZF_Zerum_ProceduralDistribution = {
     --}   
 }
 
-local ZF_Procedural_Item = next(ZF_Zerum_ProceduralDistribution, nil) -- Get the first key of the table
+local ZF_Suburbs_Item = next(ZF_Zerum_SuburbsDistributions, nil) -- Get the first key of the table
 
-
-while ZF_Procedural_Item do -- item not null
-    for ZF_item in pairs (ZF_Zerum_ProceduralDistribution) do -- for each Place and Probability in the item
-        local ZF_Procedural_Place = ZF_item[1]
-        local ZF_Procedural_Probability = ZF_item[2]
-        table.insert(ProceduralDistributions.list[ ZF_Procedural_Place ].items, ZF_Procedural_Item)
-        table.insert(ProceduralDistributions.list[ ZF_Procedural_Place ].items, ZF_Procedural_Probability)
-        print(ZF_Procedural_Place, ZF_Procedural_Item, ZF_Procedural_Probability)
+while ZF_Suburbs_Item do -- item not null
+    for ZF_item in pairs (ZF_Zerum_SuburbsDistributions[ZF_Suburbs_Item]) do -- for each Place and Probability in the item
+        
+        local ZF_Suburbs_Place = ZF_item[1]
+        local ZF_Suburbs_Probability = ZF_item[2]
+        
+        table.insert(SuburbsDistributionss.list[ ZF_Suburbs_Place ].items, ZF_Suburbs_Item)
+        table.insert(SuburbsDistributionss.list[ ZF_Suburbs_Place ].items, ZF_Suburbs_Probability)
     end
-    ZF_Procedural_Item = next(ZF_Zerum_ProceduralDistribution, ZF_Procedural_Item) -- Get the next key of the table
+    ZF_Suburbs_Item = next(ZF_Zerum_SuburbsDistributions, ZF_Suburbs_Item) -- Get the next key of the table
 end
-
--- Suburbs Distribution --
-
-
