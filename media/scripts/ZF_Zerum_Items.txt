@@ -2,16 +2,16 @@ module ZF_Zerum {
     imports {
         Base
     }
-    item Z-Serum
+    item ZSerum
     {
         DisplayCategory = FirstAid,
         Weight = 0.1,
         Type = Food,
         DisplayName = Z-Serum,
-        Icon = ZF_Z-Serum,
+        Icon = ZF_Zerum,
         CustomContextMenu = ZS_Inject,
-        OnEat = ZF_Zerum_Inyeccion,
-        CantBeFrozen = TRUE,
+        OnEat = ZF_Zerum_Inject,
         Medical = TRUE,
+        Tooltip = ZF_Zerum,
     }
 }

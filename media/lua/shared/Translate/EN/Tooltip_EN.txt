@@ -1,0 +1,3 @@
+Tooltip_EN = {
+    Tooltip_ZF_Zerum = "I don't need it... I NEED IT!",
+}
