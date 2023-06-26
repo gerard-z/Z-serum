@@ -6,13 +6,13 @@ function ZF_Zerum_Inject(food, player, percent)
     -- for debug set to true
     local debugM = false;
     if debugM then
-        print("Inyeccion de Zerum")
-        print("Infeccion level: ")
+        print("Injection of Zerum")
+        print("infection level: ")
         print(bodyDamage:getInfectionLevel())
-        print("Infeccion time: ")
-        print(bodyDamage:getInfectionTime()) 
-        print("Infeccion Mortality Duration: ")
-        print(bodyDamage:getInfectionMortalityDuration()) 
+        print("infection time: ")
+        print(bodyDamage:getInfectionTime())
+        print("infection Mortality Duration: ")
+        print(bodyDamage:getInfectionMortalityDuration())
         print("Hours Survived: ")   
         print(player:getHoursSurvived())
     end
@@ -21,21 +21,58 @@ function ZF_Zerum_Inject(food, player, percent)
     if IsInfected == true then
         bodyDamage:setInfectionLevel(0.1); -- set the infection level to 0.1
         bodyDamage:setInfectionTime(player:getHoursSurvived()); -- restart the infection time
-        bodyDamage:setInfectionMortalityDuration(player:getHoursSurvived()+20*5); -- the player will die in 5 days
+        bodyDamage:setInfectionMortalityDuration(player:getHoursSurvived()+24*5); -- the player will die in 5 days
+        local player_ModData = player:getModData();
+        player_ModData.isZerumInjected = true;
     end
 
     if debugM then
-        print("Inyeccion de Zerum")
-        print("Infeccion level: ")
+        print("Injection of Zerum")
+        print("infection level: ")
         print(bodyDamage:getInfectionLevel())
-        print("Infeccion time: ")
+        print("infection time: ")
         print(bodyDamage:getInfectionTime()) 
-        print("Infeccion Mortality Duration: ")
-        print(bodyDamage:getInfectionMortalityDuration()) 
-        print("Hours Survived: ")   
+        print("infection Mortality Duration: ")
+        print(bodyDamage:getInfectionMortalityDuration())
+        print("Hours Survived: ")
         print(player:getHoursSurvived())
     end
-    
-end    
+end
 
 
+
+-- Events --
+
+-- Reduce Stress --
+
+function ZF_Zerum_RStress()
+    local player = getPlayer()
+    local bodyDamage = player:getBodyDamage(); -- return the body damage of the player
+    local IsInfected = bodyDamage:IsInfected();
+    if IsInfected == false then
+        return
+    end
+
+    local player_ModData = player:getModData();
+
+    if player_ModData.isZerumInjected == nil then
+        return
+    end
+
+    local player_stats = player:getStats()
+
+    local time_after_injection = bodyDamage:getInfectionTime()
+    local reduce_stress = 0.6/ ((time_after_injection+1)^0.4)
+    if reduce_stress < 0.1 then
+        return
+    end
+
+    local stress = player_stats:getStress()
+    local stress_final = stress - reduce_stress
+    if stress_final < 0 then
+        stress_final = 0
+    end
+    player_stats:setStress(stress_final)
+end
+
+Events.EveryHours.Add(ZF_Zerum_RStress)
