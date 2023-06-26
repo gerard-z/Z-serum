@@ -12,6 +12,6 @@ module ZF_Zerum {
         CustomContextMenu = ZS_Inject,
         OnEat = ZF_Zerum_Inject,
         Medical = TRUE,
-        Tooltip = ZF_Zerum,
+        Tooltip = Tooltip_ZF_Zerum,
     }
 }

@@ -1,7 +1,7 @@
 --- Import the distributions of vehicles ---
 
 -- Vanilla vehicles --
-require "Vehicles/VehiclesDistribution" 
+require "Vehicles/VehicleDistribution"
 
 ---------------------------------------
 
@@ -10,34 +10,40 @@ require "Vehicles/VehiclesDistribution"
 -- Vanilla Vehicles --
 
 
-local ZF_Zerum_VehiclesDistribution = {
-    --YourItem = {
-    --    {"Car1", 100},
-    --    {"Car2", probability},
-    --}   
-    ["ZF_Zerum.ZSerum"] ={
-        {"Police",       10},
-        {"Ambulance",    10},
-        {"Doctor",       10},
+local ZF_Zerum_VehiclesDistributions = {
+    {   {"ZF_Zerum.ZSerum"},
+        {"PoliceTruckBed",       20},
+        {"AmbulanceTruckBed",    40},
+        {"DoctorTruckBed",       40},
     }
 }
 
-local ZF_Vehicles_Item = next(ZF_Zerum_VehiclesDistribution, nil) -- Get the first key of the table
+local ZF_i_VehiclesDistributions = 1 -- Index of the Table
+local ZF_Lenght_VehiclesDistributions = #ZF_Zerum_VehiclesDistributions -- Lenght of the Table
 
 
-while ZF_Vehicles_Item ~= nil do -- item not null
-    local ZF_largo = #ZF_Zerum_VehiclesDistribution[ZF_Vehicles_Item]
-    local ZF_tabla= ZF_Zerum_VehiclesDistribution[ZF_Vehicles_Item]
-    local ZF_indice_i = 1
-    while ZF_indice_i <= ZF_largo do
-        local ZF_Vehicles_Car = ZF_tabla[ZF_indice_i][1]
-        local ZF_Vehicles_Probability = ZF_tabla[ZF_indice_i][2]
+
+while ZF_i_VehiclesDistributions <= ZF_Lenght_VehiclesDistributions do -- meanwhile we are inside the table
+
+    local ZF_table_item = ZF_Zerum_VehiclesDistributions[ZF_i_VehiclesDistributions] -- Get the table for the current item
+    local ZF_length = #ZF_table_item -- Get the lenght of the table
+
+    local ZF_Item = ZF_table_item[ZF_i_VehiclesDistributions][1] -- Get the item name
+
+    local ZF_indice_i = 2 -- Start the index at 2, because the first value is the item name
+
+    while ZF_indice_i <= ZF_length do -- Meanwhile we are inside the table of places, probabilities of the item
+
+        local ZF_Place = ZF_table_item[ZF_indice_i][1] --Get the place name
+        local ZF_Probability = ZF_table_item[ZF_indice_i][2] -- Get the probability    
+
+        -- We add the item and the probability to the table
+        table.insert(VehicleDistributions[ ZF_Place ].items, ZF_Item);
+        table.insert(VehicleDistributions[ ZF_Place ].items, ZF_Probability);
+
         ZF_indice_i = ZF_indice_i + 1
-
-        table.insert(VehiclesDistributions.list[ ZF_Vehicles_Car ].items, ZF_Vehicles_Item)
-        table.insert(VehiclesDistributions.list[ ZF_Vehicles_Car ].items, ZF_Vehicles_Probability)
     end
-    ZF_Vehicles_Item = next(ZF_Zerum_VehiclesDistribution, ZF_Vehicles_Item) -- Get the next key of the table
+    ZF_i_VehiclesDistributions = ZF_i_VehiclesDistributions + 1
 end
 
 
