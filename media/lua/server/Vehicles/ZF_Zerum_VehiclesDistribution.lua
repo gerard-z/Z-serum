@@ -12,12 +12,12 @@ require "Vehicles/VehicleDistribution"
 
 local ZF_Zerum_VehiclesDistributions = {
     {   {"ZF_Zerum.ZSerum"},
-        {"PoliceGloveBox",       10},
+        {"PoliceGloveBox",       5},
         {"PoliceTruckBed",       10},
-        {"AmbulanceGloveBox",    20},
-        {"AmbulanceTruckBed",    40},
+        {"AmbulanceGloveBox",    10},
+        {"AmbulanceTruckBed",    30},
         {"DoctorTruckBed",       10},
-        {"DoctorGloveBox",       10},
+        {"DoctorGloveBox",       5},
     }
 }
 
