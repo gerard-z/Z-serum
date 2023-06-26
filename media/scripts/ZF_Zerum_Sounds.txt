@@ -1,0 +1,10 @@
+module ZF_Zerum {
+    sound UltraZerum {
+        category = ZF_Mods,
+        clip {
+            file = media/sound/UltraZerum.ogg,
+            distanceMax = 100,
+            volume = 1.0,
+        }
+    }
+}

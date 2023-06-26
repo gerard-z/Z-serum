@@ -13,5 +13,6 @@ module ZF_Zerum {
         OnEat = ZF_Zerum_Inject,
         Medical = TRUE,
         Tooltip = Tooltip_ZF_Zerum,
+        CustomEatSound = UltraZerum,
     }
 }
