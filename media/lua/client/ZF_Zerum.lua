@@ -46,20 +46,18 @@ end
 -- Reduce Stress --
 
 function ZF_Zerum_RStress()
-    local player = getPlayer()
+    local player = getPlayer() -- return the player
     local bodyDamage = player:getBodyDamage(); -- return the body damage of the player
-    local IsInfected = bodyDamage:IsInfected();
-    if IsInfected == false then
+    local IsInfected = bodyDamage:IsInfected(); 
+    local player_ModData = player:getModData(); -- To obtain the ModData of the player
+
+    -- Check if the player is infected or if he has injected the Z-Serum
+    if IsInfected == false or player_ModData.isZerumInjected == nil or player_ModData.isZerumInjected == false then
+        player_ModData.isZerumInjected = false
         return
     end
 
-    local player_ModData = player:getModData();
-
-    if player_ModData.isZerumInjected == nil then
-        return
-    end
-
-    local player_stats = player:getStats()
+    local player_stats = player:getStats() -- Get the stats of the player like stress, panic, etc.
 
     local time_after_injection = bodyDamage:getInfectionTime()
     local reduce_stress = 0.6/ ((time_after_injection+1)^0.4)
@@ -67,12 +65,12 @@ function ZF_Zerum_RStress()
         return
     end
 
-    local stress = player_stats:getStress()
+    local stress = player_stats:getStress() -- Get the stress of the player
     local stress_final = stress - reduce_stress
     if stress_final < 0 then
         stress_final = 0
     end
-    player_stats:setStress(stress_final)
+    player_stats:setStress(stress_final) -- Set the stress of the player
 end
 
-Events.EveryHours.Add(ZF_Zerum_RStress)
+Events.EveryHours.Add(ZF_Zerum_RStress) -- Add the event to the game every hour

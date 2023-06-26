@@ -1,0 +1,3 @@
+ContextMenu_AR = {
+	ContextMenu_ZS_Inject = "Inyectarse",
+}

@@ -14,10 +14,14 @@ require "Items/ProceduralDistributions"
 
 -- To add an item to a procedural distribution, you need to follow this format:
 
--- Example Code:
+-- Example Code of the format manually:
 -- table.insert(ProceduralDistributions["list"][ "The_Place_Where_You_Want_It" ].items, "Item_You_Want_To_Add");
 -- table.insert(ProceduralDistributions["list"][ "The_Place_Where_You_Want_It" ].items, Probability --(this param is a float!)-- );
 
+-- Important: I think that for more probability in the n_times that the item will spawn, you need to add the item n_times in the table, and not only one time with a high probability.
+
+
+-- Example Code of the format with ZF_Table method:
 local ZF_Zerum_ProceduralDistribution = {
     -- Object in the first value
     --Example:
@@ -29,28 +33,28 @@ local ZF_Zerum_ProceduralDistribution = {
     --}
     {
         {"ZF_Zerum.ZSerum"},
-        {"ArmyStorageMedical",    50},
+        {"ArmyStorageMedical",     40},
         {"ArmySurplusBackpacks",   10},
         {"ControlRoomCounter",     10},
-        {"DrugLabSupplies",       40},
-        {"DrugShackDrugs",        40},
+        {"DrugLabSupplies",        40},
+        {"DrugShackDrugs",         40},
         {"DrugShackMisc",          10},
-        {"FireDeptLockers",        5},
-        {"HospitalLockers",        20},
-        {"LockerArmyBedroom",      20},
-        {"MedicalClinicDrugs",    50},
-        {"MedicalStorageDrugs",   50},
+        {"FireDeptLockers",        2},
+        {"HospitalLockers",        10},
+        {"LockerArmyBedroom",      10},
+        {"MedicalClinicDrugs",     40},
+        {"MedicalStorageDrugs",    40},
         {"MorgueChemicals",        10},
-        {"PoliceDesk",             5},
+        {"PoliceDesk",             2},
         {"PoliceEvidence",         10},
         {"PoliceLockers",          10},
-        {"PrisonCellRandom",       5},
-        {"PrisonGuardLockers",     5},
-        {"SafehouseMedical",      40},
-        {"SecurityLockers",        5},
-        {"SpiffosKitchenFreezer",  5},
+        {"PrisonCellRandom",       2},
+        {"PrisonGuardLockers",     2},
+        {"SafehouseMedical",       40},
+        {"SecurityLockers",        2},
+        {"SpiffosKitchenFreezer",  2},
         {"StoreShelfMedical",      20},
-        {"TestingLab",             20},
+        {"TestingLab",             10},
     }
 }
 
@@ -90,16 +94,16 @@ end
 
 
 -- Suburbs Distribution --
--- Generally we add here the non procedural items, like bags, etc.
+-- Generally we add here the non procedural items, like bags, outfits, etc.
 
 local ZF_Zerum_SuburbsDistributions = {
     {
         {"ZF_Zerum.ZSerum"},
         {"Bag_DoctorBag",    20},
-        {"Bag_MedicalBag",   20},
+        {"Bag_MedicalBag",   40},
         {"Bag_Military",     40},
         {"Bag_SurvivorBag",  20},
-        {"FirstAidKit",       10},
+        {"FirstAidKit",      10},
     
     }
 }
