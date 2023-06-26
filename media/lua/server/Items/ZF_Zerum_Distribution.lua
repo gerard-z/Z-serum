@@ -24,7 +24,7 @@ local ZF_Zerum_ProceduralDistribution = {
     --    {"Place2", probability},
     --    {"Place3", 0.1},
     --}    
-    ZF_Zerum.ZSerum = {
+    ["ZF_Zerum.ZSerum"] ={
         {"ArmyStorageMedical",    30},
         {"ArmySurplusBackpacks",   5},
         {"ControlRoomCounter",     5},
@@ -50,21 +50,26 @@ local ZF_Zerum_ProceduralDistribution = {
     }
 }
 
+
 local ZF_Procedural_Item = next(ZF_Zerum_ProceduralDistribution, nil) -- Get the first key of the table
+while ZF_Procedural_Item ~= nil do -- item not null
 
-
-while ZF_Procedural_Item do -- item not null
-    for ZF_item in pairs (ZF_Zerum_ProceduralDistribution[ZF_Procedural_Item]) do -- for each Place and Probability in the item
-        
-        local ZF_Procedural_Place = ZF_item[1]
-        local ZF_Procedural_Probability = ZF_item[2]
-        
+    local ZF_largo = #ZF_Zerum_ProceduralDistribution[ZF_Procedural_Item]
+    local ZF_tabla= ZF_Zerum_ProceduralDistribution[ZF_Procedural_Item]
+    local ZF_indice_i = 1
+    while ZF_indice_i <= ZF_largo do
+        local ZF_Procedural_Place = ZF_tabla[ZF_indice_i][1]
+        local ZF_Procedural_Probability = ZF_tabla[ZF_indice_i][2]
+        ZF_indice_i = ZF_indice_i + 1
         table.insert(ProceduralDistributions.list["list"][ ZF_Procedural_Place ].items, ZF_Procedural_Item)
-        table.insert(ProceduralDistributions.list["list"][ ZF_Procedural_Place ].items, ZF_Procedural_Probability)
-        --print(ZF_Procedural_Item, ZF_Procedural_Place, ZF_Procedural_Probability)
+        table.insert(ProceduralDistributions.list["list"][ ZF_Procedural_Place ].items, ZF_Procedural_Probability)        
     end
     ZF_Procedural_Item = next(ZF_Zerum_ProceduralDistribution, ZF_Procedural_Item) -- Get the next key of the table
 end
+
+
+
+
 
 
 
@@ -77,7 +82,7 @@ local ZF_Zerum_SuburbsDistributions = {
     --    {"Place2", probability},
     --    {"Place3", 0.1},
     --}   
-    ZF_Zerum.ZSerum={
+    ["ZF_Zerum.ZSerum"] ={
     
         {"Bag_DoctorBag",    10},
         {"Bag_MedicalBag",   10},
@@ -88,16 +93,19 @@ local ZF_Zerum_SuburbsDistributions = {
     }
 }
 
-local ZF_Suburbs_Item = next(ZF_Zerum_SuburbsDistributions, nil) -- Get the first key of the table
 
-while ZF_Suburbs_Item do -- item not null
-    for ZF_item in pairs (ZF_Zerum_SuburbsDistributions[ZF_Suburbs_Item]) do -- for each Place and Probability in the item
-        
-        local ZF_Suburbs_Place = ZF_item[1]
-        local ZF_Suburbs_Probability = ZF_item[2]
-        
+local ZF_Suburbs_Item = next(ZF_Zerum_SuburbsDistributions, nil) -- Get the first key of the table
+while ZF_Suburbs_Item ~= nil do -- item not null
+
+    local ZF_largo = #ZF_Zerum_SuburbsDistributions[ZF_Suburbs_Item]
+    local ZF_tabla= ZF_Zerum_SuburbsDistributions[ZF_Suburbs_Item]
+    local ZF_indice_i = 1
+    while ZF_indice_i <= ZF_largo do
+        local ZF_Suburbs_Place = ZF_tabla[ZF_indice_i][1]
+        local ZF_Suburbs_Probability = ZF_tabla[ZF_indice_i][2]
+        ZF_indice_i = ZF_indice_i + 1
         table.insert(SuburbsDistributionss.list[ ZF_Suburbs_Place ].items, ZF_Suburbs_Item)
-        table.insert(SuburbsDistributionss.list[ ZF_Suburbs_Place ].items, ZF_Suburbs_Probability)
+        table.insert(SuburbsDistributionss.list[ ZF_Suburbs_Place ].items, ZF_Suburbs_Probability)     
     end
     ZF_Suburbs_Item = next(ZF_Zerum_SuburbsDistributions, ZF_Suburbs_Item) -- Get the next key of the table
 end
